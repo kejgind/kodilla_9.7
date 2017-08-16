@@ -18,7 +18,7 @@ pickScissors.addEventListener('click', function () {
   playerPick('scissors');
 });
 
-var gameState = 'notStarted';  // started // ended
+var gameState = 'notStarted'; // started // ended
 var player = {
   name: '',
   score: ''
@@ -65,7 +65,7 @@ function newGame () {
     gameState = 'started';
     setGameElements();
     playerNameElem.innerHTML = player.name;
-    setGamePoints(); // This function has not been created yet
+    setGamePoints();
   }
 }
 
@@ -119,9 +119,9 @@ function setGamePoints () {
 function checkGameWinner () {
   if (player.score === 10) {
     alert('You\'ve Won -> ' + player.name + ' ' + player.score + ' : ' + computer.score + ' Computer');
-    setGameElements(gameState = 'ended');
+    gameState = 'ended';
   } else if (computer.score === 10) {
     alert('You\'ve Lost -> ' + player.name + ' ' + player.score + ' : ' + computer.score + ' Computer');
-    setGameElements(gameState = 'ended');
+    gameState = 'ended';
   }
 }
