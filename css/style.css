@@ -1,0 +1,11 @@
+#js-newGameElement {
+  margin-top: 5vh;
+}
+
+#js-playerPickElement {
+  margin: 5vh auto;
+}
+
+.name-row, .pick-row {
+  margin-bottom: 2vh;
+}
