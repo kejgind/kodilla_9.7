@@ -58,6 +58,10 @@ function newGame () {
   player.name = prompt('Please enter your name', 'imię gracza');
   if (player.name) {
     player.score = computer.score = 0;
+    playerPickElem.innerHTML = 'Player Selection';
+    computerPickElem.innerHTML = 'Computer Selection';
+    playerResultElem.innerHTML = 'Player Score';
+    computerResultElem.innerHTML = 'Computer Score';
     gameState = 'started';
     setGameElements();
     playerNameElem.innerHTML = player.name;
