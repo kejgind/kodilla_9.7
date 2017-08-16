@@ -120,8 +120,10 @@ function checkGameWinner () {
   if (player.score === 10) {
     alert('You\'ve Won -> ' + player.name + ' ' + player.score + ' : ' + computer.score + ' Computer');
     gameState = 'ended';
+    setGameElements();
   } else if (computer.score === 10) {
     alert('You\'ve Lost -> ' + player.name + ' ' + player.score + ' : ' + computer.score + ' Computer');
     gameState = 'ended';
+    setGameElements();
   }
 }
