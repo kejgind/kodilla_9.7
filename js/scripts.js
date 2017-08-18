@@ -30,6 +30,7 @@ var computer = {
 var newGameElem = document.getElementById('js-newGameElement');
 var pickElem = document.getElementById('js-playerPickElement');
 var resultsElem = document.getElementById('js-resultsTableElement');
+var setRoundsNumb = document.getElementById('js-settingRoundsNumber');
 
 function setGameElements () {
   switch (gameState) {
@@ -37,6 +38,7 @@ function setGameElements () {
       newGameElem.style.display = 'none';
       pickElem.style.display = 'block';
       resultsElem.style.display = 'block';
+      setRoundsNumb.style.display = 'block';
       break;
     case 'ended':
       newGameBtn.innerText = 'Jeszcze raz';
@@ -45,7 +47,8 @@ function setGameElements () {
       newGameElem.style.display = 'block';
       pickElem.style.display = 'none';
       resultsElem.style.display = 'none';
-  }
+      setRoundsNumb.style.display = 'none';
+    }
 }
 
 setGameElements();
@@ -53,15 +56,18 @@ setGameElements();
 var playerPointsElem = document.getElementById('js-playerPoints');
 var playerNameElem = document.getElementById('js-playerName');
 var computerPointsElem = document.getElementById('js-computerPoints');
+var roundsNumb = document.getElementById('js-roundsNumber');
 
 function newGame () {
   player.name = prompt('Please enter your name', 'imię gracza');
-  if (player.name) {
+  // setRoundsNumber();
+  if (player.name && rounds) {
     player.score = computer.score = 0;
     playerPickElem.innerHTML = 'Player Selection';
     computerPickElem.innerHTML = 'Computer Selection';
     playerResultElem.innerHTML = 'Player Score';
     computerResultElem.innerHTML = 'Computer Score';
+    roundsNumb.innerHTML = rounds;
     gameState = 'started';
     setGameElements();
     playerNameElem.innerHTML = player.name;
@@ -116,12 +122,19 @@ function setGamePoints () {
   computerPointsElem.innerHTML = computer.score;
 }
 
+var rounds = prompt('Podaj ilość rund potrzebnych do wygranej', 'ilość rund - wpisz liczbę');
+
+// function setRoundsNumber () {
+//   rounds = prompt('Podaj ilość rund potrzebnych do wygranej', 'ilość rund - wpisz liczbę');
+//   console.log(rounds);
+// }
+
 function checkGameWinner () {
-  if (player.score === 10) {
+  if (player.score === rounds) {
     alert('You\'ve Won -> ' + player.name + ' ' + player.score + ' : ' + computer.score + ' Computer');
     gameState = 'ended';
     setGameElements();
-  } else if (computer.score === 10) {
+  } else if (computer.score === rounds) {
     alert('You\'ve Lost -> ' + player.name + ' ' + player.score + ' : ' + computer.score + ' Computer');
     gameState = 'ended';
     setGameElements();
